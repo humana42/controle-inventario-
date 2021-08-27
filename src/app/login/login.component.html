@@ -1,0 +1,25 @@
+<div class="container">
+    <mat-card class="mat-elevation-z5">
+        <mat-card-header>
+            <h3>Login</h3>
+        </mat-card-header>
+        <mat-card-content >
+            <form [formGroup]="LoginForm" (ngSubmit)="login()">
+                <mat-form-field>
+                    <input matInput  placeholder="Usuário" formControlName="usuario">
+                    <mat-error *ngIf="LoginForm.controls.usuario.hasError('required')">
+                    Por favor digite o usuário
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="Senha" formControlName="senha">
+                    <mat-error *ngIf="LoginForm.controls.senha.hasError('required')">
+                    Por favor digite a senha
+                    </mat-error>
+                </mat-form-field>
+                <button  mat-raised-button type="submit" class="btnLogin">Acessar</button>
+            </form>
+            <!-- <button mat-button type="submit" class="btnSenha" (click)="OpenRescuePass()">Esqueci a senha</button>                -->
+        </mat-card-content>
+    </mat-card>
+</div>
