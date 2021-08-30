@@ -7,7 +7,7 @@ import { AuthGuard } from './_guards';
 const routes: Routes = [
   {path: '',   redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component:LoginComponent},
-  {path:'home',component:HomeComponent},
+  {path:'home',component:HomeComponent, canActivate: [AuthGuard], canLoad: [AuthGuard]},
   {path: 'ativos', loadChildren: () => import('./Ativos/ativos.module').then(m => m.AtivosModule)},
 ];
 

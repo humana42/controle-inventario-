@@ -1,1 +1,34 @@
-<p>page works!</p>
+<mat-drawer-container class="container" autosize>
+    <mat-drawer #drawer class="nav" mode="side">
+        <div class="head">
+            <button mat-fab disabled>{{siglaUsuario}}</button>
+        </div>
+
+        <mat-selection-list [multiple]="false">
+            <mat-list-option (click)="home()" selected>
+                Home
+            </mat-list-option>
+            <mat-list-option (click)="buscarAtivo()">
+                Buscar Ativos TI
+            </mat-list-option>
+            <mat-list-option (click)="cadastrarAtivo()">
+                Novo Ativo TI
+            </mat-list-option>
+        </mat-selection-list>
+    </mat-drawer>
+
+    <div>
+        <mat-toolbar>
+            <button mat-icon-button (click)="drawer.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <a class="logout" (click)='logout()'>Logout</a>
+        </mat-toolbar>
+        <div class="content">
+        <mat-card>
+            <ng-content></ng-content>
+        </mat-card>
+    </div>
+    </div>
+
+</mat-drawer-container>

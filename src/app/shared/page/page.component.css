@@ -1,0 +1,50 @@
+.container{
+    width: 100%;
+    height: 100vh;
+}
+.nav{
+    width: 20vw;
+}
+mat-toolbar{
+    background-color: #2e2c64;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+.head{
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+::ng-deep.mat-list-text{
+    font-weight: 600;
+}
+
+.mat-fab{
+    transform: scale(1.5);
+    font-size: 3vh;
+    font-weight: 600;
+}
+.mat-fab:disabled{
+    border: solid;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+mat-card{
+    margin: 50px;
+    width: 70vw;
+    min-height: 40vh;
+}
+.logout{
+    cursor: pointer;
+    font-size: 0.8em;
+}

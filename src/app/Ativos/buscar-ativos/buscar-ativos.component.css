@@ -1,0 +1,20 @@
+mat-form-field{
+    margin-right: 30px;
+}
+.mat-mini-fab{
+    background-color: #2e2c64;
+}
+.search{
+    font-size: 0.8em;
+    width: 200px;
+    margin: 30px 10px 10px 30px;
+}
+table{
+    width: 100%;
+}
+.searchResult{
+    margin-top: 30px;
+}
+.container{
+    margin: 50px;
+}

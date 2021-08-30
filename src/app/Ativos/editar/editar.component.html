@@ -1,26 +1,13 @@
-<app-page>
-<div class="container">
-    <form [formGroup]="FormAtivos" (ngSubmit)="SubmitAtivo()">
+
+<h1 mat-dialog-title>Editar {{data.data.tipoEquipamento}}</h1>
+<div mat-dialog-content>
+    <form [formGroup]="FormAtivos">
         <div class="row">
             <mat-form-field appearance="fill">
-                <mat-label>Tipo de Equipamento</mat-label>
-                <mat-select required formControlName="tipoEquipamento">
-                    <mat-option *ngFor="let c of ListTipoEquipamento" value="{{c}}">
-                        {{c}}
-                    </mat-option>
-                </mat-select>
-                <mat-error *ngIf="FormAtivos.controls.tipoEquipamento.hasError('required')">
-                    Por favor Selecione um tipo
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill">
                 <mat-label>Marca</mat-label>
-                <input matInput required formControlName="marca">
-                <mat-error *ngIf="FormAtivos.controls.marca.hasError('required')">
-                    Por favor Digite a Marca
-                </mat-error>
+                <input matInput formControlName="marca" readonly>
             </mat-form-field>
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" >
                 <mat-label>Identificação</mat-label>
                 <input matInput formControlName="identificacao" readonly>
             </mat-form-field>
@@ -29,7 +16,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Departamento</mat-label>
                 <mat-select required formControlName="departamento">
-                    <mat-option *ngFor="let c of ListDepartamento" value="{{c}}">
+                    <mat-option *ngFor="let c of data.ListDepartamento" value="{{c}}">
                         {{c}}
                     </mat-option>
                 </mat-select>
@@ -40,7 +27,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Status</mat-label>
                 <mat-select required formControlName="status">
-                    <mat-option *ngFor="let c of ListStatus" value="{{c}}">
+                    <mat-option *ngFor="let c of data.ListStatus" value="{{c}}">
                         {{c}}
                     </mat-option>
                 </mat-select>
@@ -49,9 +36,9 @@
                 </mat-error>
             </mat-form-field>
         </div>
-        <div class="row">
-            <button mat-button>Salvar</button>
-        </div>
     </form>
 </div>
-</app-page>
+<div mat-dialog-actions>
+  <button mat-button (click)="SubmitAtivo()">Salvar</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Fechar</button>
+</div>

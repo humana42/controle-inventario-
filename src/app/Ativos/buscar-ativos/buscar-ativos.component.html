@@ -1,1 +1,96 @@
-<p>buscar-ativos works!</p>
+<app-page>
+<div class="container">
+    <form [formGroup]="FormSearch" (ngSubmit)="search()">
+    <div class="row">
+        <mat-form-field appearance="fill">
+            <mat-label>Filtro</mat-label>
+            <mat-select required formControlName="filtro">
+                <mat-option *ngFor="let l of ListFiltro" value="{{l.value}}">
+                    {{l.value}}
+                </mat-option>
+            </mat-select>
+            <mat-error>
+                Por favor Selecione um Filtro
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" *ngIf="filtroValue != ''">
+            <mat-label>{{filtroValue}}</mat-label>
+            <mat-select required formControlName="filtro2">
+                <ng-container *ngFor="let l of ListTipoEquipamento">
+                    <mat-option *ngIf='filtroValue == "Tipo de Equipamento"' value="{{l}}" >
+                        {{l}}
+                    </mat-option>
+                </ng-container>
+                <ng-container *ngFor="let l of ListStatus">
+                    <mat-option *ngIf='filtroValue == "Status"' value="{{l}}" >
+                        {{l}}
+                    </mat-option>
+                </ng-container>
+                <ng-container *ngFor="let l of ListDepartamento">
+                    <mat-option *ngIf='filtroValue == "Departamento"' value="{{l}}" >
+                        {{l}}
+                    </mat-option>
+                </ng-container>
+            </mat-select>
+            <mat-error>
+                Por favor Selecione {{filtroValue}}
+            </mat-error>
+        </mat-form-field>
+
+        <button mat-mini-fab [disabled]="!FormSearch.valid">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</form>
+
+<div class="searchResult mat-elevation-z2">
+    <mat-form-field class="search" appearance="standard">
+        <mat-label>Pesquisar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+
+    <div class="tbEquipamentos">
+        <table mat-table [dataSource]="ListAtivos">
+
+
+            <ng-container matColumnDef="TipoEquipamento">
+                <th mat-header-cell *matHeaderCellDef> Tipo Equipamento </th>
+                <td mat-cell *matCellDef="let d"> {{d.tipoEquipamento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Identificacao">
+                <th mat-header-cell *matHeaderCellDef> Identificação </th>
+                <td mat-cell *matCellDef="let d"> {{d.identificacao}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Marca">
+                <th mat-header-cell *matHeaderCellDef> Marca </th>
+                <td mat-cell *matCellDef="let d">  {{d.marca}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Departamento">
+                <th mat-header-cell *matHeaderCellDef> Departamento </th>
+                <td mat-cell *matCellDef="let d"> {{d.departamento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Status">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let d"> {{d.status}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Editar">
+                <th mat-header-cell *matHeaderCellDef> Editar </th>
+                <td mat-cell *matCellDef="let d"> <a mat-icon-button (click)="editarAtivo(d)"> <mat-icon>open_in_new</mat-icon> </a> </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="descricaoColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: descricaoColumns;"></tr>
+
+        </table>
+    </div>
+    <mat-paginator *ngIf="pagination" [length]="100" [pageSize]="4" showFirstLastButtons></mat-paginator>
+</div>
+</div>
+</app-page>

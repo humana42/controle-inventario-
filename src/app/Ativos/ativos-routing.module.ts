@@ -5,8 +5,8 @@ import { InserirAtivosComponent } from './inserir-ativos/inserir-ativos.componen
 
 
 const routes: Routes = [
-  {path:'inserirAtivos', component:InserirAtivosComponent},
-  {path: 'buscarAtivos', component:BuscarAtivosComponent}
+  {path:'inserir', component:InserirAtivosComponent},
+  {path: 'buscar', component:BuscarAtivosComponent}
 ]
 
 @NgModule({

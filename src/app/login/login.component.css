@@ -5,20 +5,26 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+   background-image: radial-gradient(circle at 77.14% 82.35%, #7b4786 0, #613178 25%, #411867 50%, #1a0157 75%, #00004a 100%);
 }
 
-
+mat-card{
+    opacity: 0.7;
+}
 mat-card-header {
     margin: 0;
-    margin-bottom: 50px;
-    padding: 0 0 10px 0;
+    padding: 5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #770000;
-    color: #C2C2C2;
-    text-shadow: 1.5px 2px black;
+}
+mat-icon{
+    color: #2e2c64;
+    transform: scale(6);
+}
+mat-divider{
+    margin-bottom: 2vh;
 }
 
 mat-card-content{
@@ -26,7 +32,7 @@ mat-card-content{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 30px;
+    padding-bottom: 3vh;
 }
 
 form {
@@ -39,29 +45,19 @@ mat-form-field {
     width: 300px;
     margin: 10px;
 }
-.btnSenha{
-    margin-top: 20px;
-}
+
 .btnLogin {
     padding-left: 50px;
     padding-right: 50px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 2vh;
     color: white;
-    background-color: #770000;
-
+    background-color: #2e2c64;
 }
 .btnLogin:hover {
-    background-color: #440000;
+    background-color: #3a378d;
 }
 
 @media (max-width: 600px)
 {
-    mat-card-header img {
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-top: 20px;
-        margin-bottom: 5px;
-        width: 250px;
-    }
+
 }

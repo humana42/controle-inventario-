@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Usuario } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +16,29 @@ export class LoginService {
                   ]
     
     
-  constructor(private _snackbar : MatSnackBar, private route:Router) { }
+  constructor(private _snackBar : MatSnackBar, private route:Router) { }
 
-  getLogin(usuario:string, senha:string){
+  getLogin(usuario:string, senha:string) {
+    var log =
     this.List.map(user => {
-      if(user.usuario == usuario || user.senha == senha){
-        
+      if(user.usuario == usuario && user.senha == senha){
+        var exp = Date.now()
         localStorage.setItem('usuario', user.usuario)
         localStorage.setItem('nomeUsuario', user.nomeUsuario)
-
+        localStorage.setItem('exp', exp.toString())
+        
+        return true
+      } else return false
+    })
+      var m =log.some(x => x== true)
+      if(m){
         this.route.navigateByUrl('/home');
-
       }else{
-        this._snackbar.open('Senha ou usuário inválido', "ok", {
+        this._snackBar.open("Usuário ou Senha inválidos", "ok", {
           horizontalPosition: 'center',
           verticalPosition: 'top',
           duration: 3000
         })
       }
-    })
   }
 }

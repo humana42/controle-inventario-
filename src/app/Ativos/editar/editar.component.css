@@ -1,0 +1,21 @@
+mat-form-field{
+    margin-right: 30px;
+}
+
+button {
+    padding-left: 3vh;
+    padding-right: 3vh;
+    color: white;
+    background-color: #2e2c64;
+    margin-right: 10px;
+}
+.mat-dialog-title{
+    font-size: 1.3em;
+    color: #2e2c64;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.mat-dialog-content{
+    padding: 0px;
+    margin: 30px 0px;
+}
